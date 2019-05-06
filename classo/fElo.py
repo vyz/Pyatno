@@ -44,6 +44,9 @@ class fElo:
         self.bObsolete = attro['Obsolete'] if 'Obsolete' in attro else 'z_pusto'   #26 Булево значение
         self.texto = attro['Text'] if 'Text' in attro else 'z_pusto'   #27 Булево значение
         self.charleno = attro['MaxCharsCount'] if 'MaxCharsCount' in attro else 'z_pusto'   #28
+        #Ещё добавка после "подкрутки" ключей 29.04.2019
+        self.CollectionKeyField = attro['CollectionKeyField'] if 'CollectionKeyField' in attro else 'z_pusto'   #29
+        self.RadioEditValue = attro['RadioEditValue'] if 'RadioEditValue' in attro else 'z_pusto'   #30
 
 
         self.Opera = papa
@@ -57,7 +60,8 @@ class fElo:
             if not k in ('ID', 'type', 'Type', 'Caption', 'Category', 'Compact', 'DefaultValue', 'DefalutValue', 'Enabled',
                          'Expanded', 'ImageFile', 'DimensionKind', 'IsDynamic', 'IsJobProp', 'Parent', 'PresenterVO', 'Priority',
                          'ReadOnly', 'ResetMode', 'Transparent', 'UnitsChar', 'Version', 'Visible', 'visible',
-                         'EnabledValue', 'InchDefaultValue', 'IsInErrorState', 'IsRadioEdit', 'Obsolete', 'Text', 'MaxCharsCount' ) :
+                         'EnabledValue', 'InchDefaultValue', 'IsInErrorState', 'IsRadioEdit', 'Obsolete', 'Text', 'MaxCharsCount',
+                         'CollectionKeyField', 'RadioEditValue' ) :
                 self.Dopo[k] = v
         self.sushy = vnsushy
         self.defy = vndefy
@@ -92,6 +96,8 @@ class fElo:
         elko.set('bObsolete', self.bObsolete)
         elko.set('texto', self.texto)
         elko.set('charleno', self.charleno)
+        elko.set('CollectionKeyField', self.CollectionKeyField)
+        elko.set('RadioEditValue', self.RadioEditValue)
 
         elko.set('Opera', self.Opera.ierro + ' ' + self.Opera.kia)
         elko.set('Level', str(self.levlo))

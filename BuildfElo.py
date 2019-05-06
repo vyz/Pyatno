@@ -11,8 +11,8 @@ import xml.etree.ElementTree as ET
 from Classo import Opera as ClOp
 from Classo import fElo as Fel
 
-filo = "E:\\Wabo\\Scamo\\Pyatnyshky\\Ksamalo\\OperaClassoWithIerro.xml"
-fout = "E:\\Wabo\\Scamo\\Pyatnyshky\\Ksamalo\\fElosy.xml"
+filo = ".\\Xmalo\\OperaClassoWithIerro.xml"
+fout = ".\\Xmalo\\fElosy.xml"
 eliky = {}
 
 def main():
@@ -51,9 +51,25 @@ def RecursoSCType(elem, opera, levelo, fazer) :
         else :
             vnsushy[vn.tag] = len(vn)
     elik = Fel.fElo(opera, elem.attrib, vnsushy, vndefy, levelo, fazer)
+    if elik.kia in eliky:
+        elik.kia = Podkrutka(eliky, elik.kia, elik.levlo)
     eliky[elik.kia] = elik
     print("opera - %s  levelo - %i fazer - %s el - %s leno - %i" % (opera.kia, levelo, fazer, elik.kia, len(eliky)))
 
+def Podkrutka(diksha, kluko, leva) -> str :
+    if leva != diksha[kluko].levlo :
+        suffo = "_l%02d" % leva
+        isko = kluko + suffo
+    else :
+        isko = kluko
+    k = 1
+    reto = isko
+    while reto in diksha :
+        reto = isko + "_z%02d" % k
+        k += 1
+        if k > 50 :
+            break
+    return reto
 
 def XmlFelosyWrite(flo, els) :
     start = None
